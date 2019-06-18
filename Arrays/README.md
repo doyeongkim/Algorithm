@@ -1,1 +1,1 @@
-#Codility Algorithm (Lesson 2 Arrays) Solution
+# Codility Algorithm (Lesson 2 Arrays) Solution
