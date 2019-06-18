@@ -4,7 +4,7 @@
  
  Write a function:
  
- public func solution(_ N : Int) -> Int
+ __***public func solution(_ N : Int) -> Int***__
  
  that, given a positive integer N, returns the length of its longest binary gap. The function should return 0 if N doesn't contain a binary gap.
  
