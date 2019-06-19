@@ -32,33 +32,61 @@ import UIKit
  all but one of the values in A occur an even number of times.
  */
 
+
+// slow solution using nested For-statement:
+//public func solution(_ A : inout [Int]) -> Int {
+//
+//    var count = 0
+//    var pairsArray = [Int]()
+//    var noPairNum: Int = 0
+//
+//    for i in 0..<A.count {
+//
+//        guard !pairsArray.contains(A[i]) else { continue }
+//
+//        for j in 0..<A.count {
+//            if A[i] == A[j] {
+//                count += 1
+//            }
+//        }
+//
+//        if count % 2 == 0 {
+//            pairsArray.append(A[i])
+//        } else {
+//            noPairNum = A[i]
+//            return noPairNum
+//        }
+//        count = 0
+//    }
+//    return noPairNum
+//}
+
+
+// Faster solution using Dictionary :
 public func solution(_ A : inout [Int]) -> Int {
     
-    var count = 0
-    var pairsArray = [Int]()
-    var noPairNum: Int = 0
+    var pairsDict: [Int : Int] = [:]
+    var unpairedNum: Int = 0
     
-    for i in 0..<A.count {
+    for i in A {
         
-        guard !pairsArray.contains(A[i]) else { continue }
-  
-        for j in 0..<A.count {
-            if A[i] == A[j] {
-                count += 1
-            }
-        }
-        
-        if count % 2 == 0 {
-            pairsArray.append(A[i])
+        if let _ = pairsDict[i] {
+            pairsDict[i]! += 1
         } else {
-            noPairNum = A[i]
-            return noPairNum
+            pairsDict[i] = 1
         }
-        count = 0
     }
-    return noPairNum
+    
+    for i in pairsDict {
+        if i.value % 2 != 0 {
+            unpairedNum = i.key
+        }
+    }
+    
+    return unpairedNum
 }
 
-var testArray = [9, 3, 9, 3, 9, 7, 9]
+var testArray = [9, 3, 9, 3, 9, 7, 9, 10, 10, 7, 7]
+
 solution(&testArray)
 
