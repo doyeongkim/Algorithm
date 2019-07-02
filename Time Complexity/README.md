@@ -2,3 +2,6 @@
 
 1. FrogJmp
    - Count minimal number of jumps from position X to Y.
+   
+2. PermMissingElem
+   - Find the missing element in a given permutation.
