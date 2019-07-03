@@ -48,41 +48,29 @@ var array = [3, 1, 2, 4, 3]
 
 public func solution(_ A : inout [Int]) -> Int {
     
+    var totalSum = 0
     var firstSum = 0
-    var firstSumArr: [Int] = []
-
     var secondSum = 0
-    var secondSumArr: [Int] = []
-    
     var difference = 0
     var differenceArr: [Int] = []
     
-    var minimalDiff = 0
+    for i in 0..<A.count {
+        totalSum += A[i]
+    }
     
     for i in 0..<(A.count - 1) {
         firstSum += A[i]
-        firstSumArr.append(firstSum)
-    }
-    
-    for i in 1..<(A.count) {
-        var tempSum = 0
+        secondSum = totalSum - firstSum
+        difference = abs(firstSum - secondSum)
         
-        for j in (i+1..<A.count) {
-            tempSum += A[j]
+        if difference == 0 {
+            return difference
         }
         
-        secondSum = (A[i] + tempSum)
-        secondSumArr.append(secondSum)
-    }
-    
-    for i in 0..<firstSumArr.count {
-        difference = abs(firstSumArr[i] - secondSumArr[i])
         differenceArr.append(difference)
     }
     
-    minimalDiff = differenceArr.min()!
-    
-    return minimalDiff
+    return differenceArr.min()!
 }
 
 solution(&array)
